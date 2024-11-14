@@ -1,11 +1,10 @@
 import { Kafka, logLevel } from "kafkajs";
 
 export const kafka = new Kafka({
-  clientId: "quick-chat",
   brokers: [process.env.KAFKA_BROKER!],
   ssl: true,
   sasl: {
-    mechanism: "plain",
+    mechanism: "scram-sha-256",
     username: process.env.KAFKA_USERNAME!,
     password: process.env.KAFKA_PASSWORD!,
   },
